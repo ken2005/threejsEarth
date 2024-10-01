@@ -35,7 +35,7 @@ const geo = new THREE.IcosahedronGeometry(1, 12)
 const mat = new THREE.MeshStandardMaterial({
   //color: 0xffffff,
   //flatShading: true,
-  map: loader.load('./assets/textures/earthmap1k.jpg'),
+  map: loader.load('https://kennan.alwaysdata.net/images/test1three/textures/earthmap1k.jpg'),
 
 })
 const earthMesh = new THREE.Mesh(geo, mat)
@@ -50,7 +50,7 @@ const lightMat = new THREE.MeshBasicMaterial({
   //color: 0x00ff00,
   //transparent: true,
   opacity: 0.5,
-  map: loader.load('./assets/textures/earthlights1k.jpg'),
+  map: loader.load('https://kennan.alwaysdata.net/images/test1three/textures/earthlights1k.jpg'),
   blending: THREE.AdditiveBlending,
   //wireframe: true,
   //wireframeLinewidth: 1,
@@ -62,7 +62,7 @@ const cloudsMat = new THREE.MeshStandardMaterial({
   //color: 0xffffff,
   //transparent: true,
   opacity: 0.5,
-  map: loader.load('./assets/textures/earthcloudmaptrans.jpg'),
+  map: loader.load('https://kennan.alwaysdata.net/images/test1three/textures/earthcloudmaptrans.jpg'),
   blending: THREE.AdditiveBlending,
 })
 const cloudsMesh = new THREE.Mesh(geo, cloudsMat)
