@@ -5,6 +5,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 
+
 const w = window.innerWidth
 const h = window.innerHeight
 const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true})
@@ -35,7 +36,7 @@ const geo = new THREE.IcosahedronGeometry(1, 12)
 const mat = new THREE.MeshStandardMaterial({
   //color: 0xffffff,
   //flatShading: true,
-  map: loader.load('https://kennan.alwaysdata.net/images/test1three/textures/earthmap1k.jpg'),
+  map: loader.load('https://ken2005.github.io/test1/assets/textures/earthmap1k.jpg'),
 
 })
 const earthMesh = new THREE.Mesh(geo, mat)
@@ -50,7 +51,7 @@ const lightMat = new THREE.MeshBasicMaterial({
   //color: 0x00ff00,
   //transparent: true,
   opacity: 0.5,
-  map: loader.load('https://kennan.alwaysdata.net/images/test1three/textures/earthlights1k.jpg'),
+  map: loader.load('https://ken2005.github.io/test1/assets/textures/earthlights1k.jpg'),
   blending: THREE.AdditiveBlending,
   //wireframe: true,
   //wireframeLinewidth: 1,
@@ -62,7 +63,7 @@ const cloudsMat = new THREE.MeshStandardMaterial({
   //color: 0xffffff,
   //transparent: true,
   opacity: 0.5,
-  map: loader.load('https://kennan.alwaysdata.net/images/test1three/textures/earthcloudmaptrans.jpg'),
+  map: loader.load('https://ken2005.github.io/test1/assets/textures/earthcloudmaptrans.jpg'),
   blending: THREE.AdditiveBlending,
 })
 const cloudsMesh = new THREE.Mesh(geo, cloudsMat)
