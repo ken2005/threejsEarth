@@ -1,15 +1,13 @@
-//import './style.css'
-
 import * as THREE from 'three'
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-
-
+import { ARButton } from 'three/examples/jsm/webxr/ARButton.js';
 
 const w = window.innerWidth
 const h = window.innerHeight
 const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true})
 renderer.setSize(w, h)
+renderer.xr.enabled = true;
 document.body.appendChild(renderer.domElement)
 
 const fov =   75
@@ -34,36 +32,26 @@ scene.add(earthGroup)
 
 const geo = new THREE.IcosahedronGeometry(1, 12)
 const mat = new THREE.MeshStandardMaterial({
-  //color: 0xffffff,
-  //flatShading: true,
-  map: loader.load('https://ken2005.github.io/test1/assets/textures/earthmap1k.jpg'),
-
+  map: loader.load('/assets/textures/earthmap1k.jpg'),
 })
 const earthMesh = new THREE.Mesh(geo, mat)
 earthGroup.add(earthMesh)
 
-//const stars = getStarfield()
 const sunlight = new THREE.DirectionalLight(0xffffff)
 sunlight.position.set(-2, 0.5, 1.5)
 scene.add(sunlight)
 
 const lightMat = new THREE.MeshBasicMaterial({
-  //color: 0x00ff00,
-  //transparent: true,
   opacity: 0.5,
-  map: loader.load('https://ken2005.github.io/test1/assets/textures/earthlights1k.jpg'),
+  map: loader.load('/assets/textures/earthlights1k.jpg'),
   blending: THREE.AdditiveBlending,
-  //wireframe: true,
-  //wireframeLinewidth: 1,
 })
 const lightsMesh = new THREE.Mesh(geo, lightMat)
 earthGroup.add(lightsMesh)
 
 const cloudsMat = new THREE.MeshStandardMaterial({
-  //color: 0xffffff,
-  //transparent: true,
   opacity: 0.5,
-  map: loader.load('https://ken2005.github.io/test1/assets/textures/earthcloudmaptrans.jpg'),
+  map: loader.load('/assets/textures/earthcloudmaptrans.jpg'),
   blending: THREE.AdditiveBlending,
 })
 const cloudsMesh = new THREE.Mesh(geo, cloudsMat)
@@ -80,21 +68,20 @@ auraMesh.scale.setScalar(1.03)
 
 earthGroup.add(auraMesh)
 
-const wireMat = new THREE.MeshStandardMaterial({
-  /*
-  color: 0x000000,
-  wireframe: true,
-  wireframeLinewidth: 1,
-  */
-})
+const wireMat = new THREE.MeshStandardMaterial({})
 const wireMesh = new THREE.Mesh(geo, wireMat)
-//earthMesh.add(wireMesh)
 
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2)
-//scene.add(hemiLight)
 
 renderer.render(scene, camera)
 
+const button = ARButton.createButton(renderer, {
+  optionalFeatures: ['dom-overlay'],
+  domOverlay: { root: document.body },
+});
+button.style.backgroundColor = 'black';
+button.style.color = 'white';
+document.body.appendChild(button);
 
 function animate() {
   requestAnimationFrame(animate)
